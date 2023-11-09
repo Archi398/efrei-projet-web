@@ -1,6 +1,6 @@
 # efrei-projet-web - Appetiz - Gestion de Recettes et de Tâches de Cuisine
 
-Bienvenue sur Appetiz, votre compagnon ultime pour la gestion efficace de recettes et de tâches culinaires. Organisez votre expérience culinaire, découvrez de nouvelles recettes et simplifiez la création de délicieux plats.
+Bienvenue sur Appetiz, votre compagnon ultime pour la gestion efficace de recettes et de tâches culinaires. Organisez votre expérience culinaire et simplifiez la création de délicieux plats.
 
 ## Fonctionnalités Principales
 
