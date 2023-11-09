@@ -9,21 +9,21 @@ Bienvenue sur Appetiz, votre compagnon ultime pour la gestion efficace de recett
 
 ## Installation
 
-1. Clonez le répertoire du projet.
-    git clone https://github.com/votre-utilisateur/appetiz.git
-    cd appetiz
+1. Clonez le répertoire du projet :
+    - git clone https://github.com/votre-utilisateur/appetiz.git
+    - cd appetiz
 
-2. Installez les dépendances.
-    npm install
+2. Installez les dépendances :
+    - npm install
     
 
 3. Configurez Firebase :
-    Créez un projet Firebase
-    Copiez les informations de configuration dans src/environments/environment.ts.
+    - Créez un projet Firebase
+    - Copiez les informations de configuration dans src/environments/environment.ts.
 
-4. Lancez l'application en mode développement.
-    ng serve
-    Ouvrez votre navigateur et accédez à http://localhost:4200/.
+4. Lancez l'application en mode développement :
+    - ng serve
+    - Ouvrez votre navigateur et accédez à http://localhost:4200/.
 
 ## Informations
 
