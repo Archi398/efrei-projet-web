@@ -1,29 +1,47 @@
-# efrei-projet-web - TODOLIST - Application de ToDoList
+# efrei-projet-web - FocusFlow - Application de ToDoList
 
-Bienvenue sur Appetiz, votre compagnon ultime pour la gestion efficace de recettes et de tâches culinaires. Organisez votre expérience culinaire et simplifiez la création de délicieux plats.
+Bienvenue sur FocusFlow, votre compagnon ultime pour une gestion efficace de vos tâches📝, Organisez vos tâches et simplifiez l'accomplissement de vos objectifs quotidiens 💪
 
 ## Fonctionnalités Principales
 
-- **Création de Recettes :** Ajoutez et personnalisez vos propres recettes avec tous les détails nécessaires.
-- **Gestion des Tâches :** Planifiez chaque étape de la préparation de vos recettes.
+- **Gestion des Utilisateurs :** Enregistrez-vous, connectez-vous et gérez votre compte quel que soit l'endroit où vous vous trouvez.
+- **Gestion de Tâches :** Ajoutez, personnalisez et gérez vos propres tâches. Organisez efficacement avec votre liste de tâches pour une productivité optimale 
 
-## Installation
+
+## Installation pour le site (Framework Angular)
 
 1. Clonez le répertoire du projet :
     - git clone https://github.com/votre-utilisateur/appetiz.git
-    - cd appetiz
+    - cd focusflow
 
 2. Installez les dépendances :
     - npm install
-    
 
 3. Configurez Firebase :
     - Créez un projet Firebase
-    - Copiez les informations de configuration dans src/environments/environment.ts.
+    - Copiez les informations de configuration dans src/environments/environment.ts
 
 4. Lancez l'application en mode développement :
     - ng serve
-    - Ouvrez votre navigateur et accédez à http://localhost:4200/.
+    - Ouvrez votre navigateur et accédez à http://localhost:4200/
+
+## Installation pour l'application (Flutter)
+
+1. Clonez le répertoire du projet :
+    - git clone https://github.com/votre-utilisateur/focusflow-flutter.git
+    - cd focusflow-flutter
+
+⚠️ Assurez-vous que Flutter est correctement installé sur votre machine ⚠️
+
+2. Installez les dépendances :
+    - flutter pub get
+
+3. Configurez Firebase :
+    - Créez un projet Firebase.
+    - Ajoutez le fichier de configuration google-services.json dans le répertoire android/app
+
+4. Lancez l'application sur un émulateur ou un appareil :
+    - flutter run
 
 ## Informations
 
@@ -32,4 +50,4 @@ Bienvenue sur Appetiz, votre compagnon ultime pour la gestion efficace de recett
 Anis MEZIANE - Valentin ROCHE - Hubert TRUONG - Archibald SABATIER - Quentin DARTY - Mustapha RABIAI
 
 
-**© 2023 Appetiz. Tous droits réservés.**
+**© 2023 FocusFlow Tous droits réservés.**
