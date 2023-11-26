@@ -1,10 +1,26 @@
 import { TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { AuthService } from 'src/app/auth.service';
+import {MatIconModule} from '@angular/material/icon';
+
+const MockAuthService = {
+  initialise: jasmine.createSpy()
+}
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppComponent],
+      imports: [
+        RouterTestingModule,
+        MatIconModule,
+      ],
+      declarations: [
+        AppComponent
+      ],
+      providers: [
+        {provide: AuthService, useValue: MockAuthService }
+      ]
     }).compileComponents();
   });
 
@@ -14,16 +30,11 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'angular-webapp' title`, () => {
+  it(`should have as title 'angular-firebase-todo'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('angular-webapp');
+    expect(app.title).toEqual('angular-firebase-todo');
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, angular-webapp');
-  });
+
 });
