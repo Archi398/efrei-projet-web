@@ -1,4 +1,4 @@
-<app-add-todo></app-add-todo>
+<app-add-todo (update)="getTodos()"></app-add-todo>
 <mat-card> 
   <mat-card-content>
     <mat-list role="list" *ngIf="filteredTodos$">
@@ -23,19 +23,19 @@
     <span>{{totalActiveTodos}} Taches a faire  </span>    
     <div class="filter-container" *ngIf="!isSmallScreen">
       <button mat-flat-button [ngClass]="{'active-filter': isFilterActive(FilterState.ALL)}"  (click)="setFilterState(FilterState.ALL)">Tout</button>
-      <button mat-flat-button [ngClass]="{'active-filter': isFilterActive(FilterState.ACTIVE)}" (click)="setFilterState(FilterState.ACTIVE)">Actif</button>
+      <button mat-flat-button [ngClass]="{'active-filter': isFilterActive(FilterState.ACTIVE)}" (click)="setFilterState(FilterState.ACTIVE)">En cours</button>
       <button mat-flat-button [ngClass]="{'active-filter': isFilterActive(FilterState.COMPLETED)}" (click)="setFilterState(FilterState.COMPLETED)">Fini</button>      
     </div>    
     <button mat-flat-button (click)="clearCompleted()">Tout supprimer</button>
   </mat-card-footer>
-  <progress-todo></progress-todo>
+  <progress-todo [inputProgressValue]="progressValue"></progress-todo>
 </mat-card>
 
 <mat-card *ngIf="isSmallScreen">
   <mat-card-content>
     <div class="filter-container filter-container--mobile">
       <button mat-flat-button [ngClass]="{'active-filter': isFilterActive(FilterState.ALL)}" (click)="setFilterState(FilterState.ALL)">Tout</button>
-      <button mat-flat-button [ngClass]="{'active-filter': isFilterActive(FilterState.ACTIVE)}" (click)="setFilterState(FilterState.ACTIVE)">Actif</button>
+      <button mat-flat-button [ngClass]="{'active-filter': isFilterActive(FilterState.ACTIVE)}" (click)="setFilterState(FilterState.ACTIVE)">En cours</button>
       <button mat-flat-button [ngClass]="{'active-filter': isFilterActive(FilterState.COMPLETED)}" (click)="setFilterState(FilterState.COMPLETED)">Fini</button>
     </div>   
   </mat-card-content>

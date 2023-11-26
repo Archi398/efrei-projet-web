@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 /**
  * @title Determinate progress-bar
@@ -8,13 +8,20 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
   selector: 'progress-todo',
   templateUrl: 'progress-todo.component.html',
   standalone: true,
+  styleUrls: ['progress-todo.component.scss'],
   imports: [MatProgressBarModule],
 })
-export class ProgressBarTodo {
+export class ProgressBarTodo implements OnChanges {
+  @Input() inputProgressValue = 0;
   value = 0;
 
   constructor() {
-    this.value = 80;
-    
-   }
+  
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['inputProgressValue']) {
+      this.value = changes['inputProgressValue'].currentValue;
+    }
+  }
 }

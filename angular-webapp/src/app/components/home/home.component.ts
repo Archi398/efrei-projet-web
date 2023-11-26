@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { AngularFirestore, QuerySnapshot, QueryDocumentSnapshot } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/auth.service';
@@ -18,7 +18,7 @@ enum FilterState {
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent {
+export class HomeComponent implements OnChanges {
   items$?: Observable<any[]>;
   filteredTodos$?: Observable<any[]>;
   totalActiveTodos = 0;
@@ -26,6 +26,7 @@ export class HomeComponent {
   FilterState = FilterState;
   activeFilter: BehaviorSubject<FilterState> = new BehaviorSubject<FilterState>(FilterState.ALL);
   isSmallScreen = false;
+  progressValue = 0;
 
   constructor(
     private firestore: AngularFirestore,
@@ -33,81 +34,111 @@ export class HomeComponent {
     private breakpointObserver: BreakpointObserver
   ) {
     this.auth.user$.subscribe((user: User | null) => {
-      if(user){
+      if (user) {
         this.user = user;
         this.items$ = firestore.collection('todos', ref => ref.where('userId', '==', user.uid))
-                      .valueChanges({idField: 'id'});
+          .valueChanges({ idField: 'id' });
         this.items$
-            .pipe(
-              map((items: Todo[]) => items.filter(item => !item.isCompleted).length)
-            )
-            .subscribe((totalActiveTodos: number) => {
-              this.totalActiveTodos = totalActiveTodos;
-            });
+          .pipe(
+            map((items: Todo[]) => items.filter(item => !item.isCompleted).length)
+          )
+          .subscribe((totalActiveTodos: number) => {
+            this.totalActiveTodos = totalActiveTodos;
+          });
         this.getTodos();
       }
     });
     this.isSmallScreen = breakpointObserver.isMatched('(max-width: 375px)');
+
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log('ngOnChanges');
+    this.getTodos();
+  }
+
+  isFilterActive(filterState: FilterState) {
+    return this.activeFilter.getValue() === filterState;
+  }
+
+  getTodos() {
+    if (!this.items$) {
+      return;
+    }
+
     
-   }
 
-   isFilterActive(filterState: FilterState){
-     return this.activeFilter.getValue() === filterState;
-   }
+    this.filteredTodos$ = combineLatest(this.items$, this.activeFilter).pipe(
+      map(([todos, currentFilter]: [Todo[], FilterState]) => {
+        let total = 0;
+        let notCompleted = 0;
+        this.progressValue = 0;
 
-   getTodos(){
-     if(!this.items$){
-       return;
-     }
-
-    this.filteredTodos$ = combineLatest(this.items$, this.activeFilter)
-      .pipe(
-        map(([todos, currentFilter]: [Todo[], FilterState]) => {
-          if(currentFilter === FilterState.ALL){
-            return todos;
+        todos.forEach(todo => {
+          if(todo.isCompleted){
+            notCompleted = notCompleted + 1;
           }
-          return todos.filter((todo: Todo) => {
-            const filterCondition = currentFilter === FilterState.COMPLETED ? true : false;
-            return todo.isCompleted === filterCondition;
-          });
         })
-      );
-   }
+
+        total = todos.length;
+        this.progressValue = (notCompleted / total) * 100;
+
+        if (currentFilter === FilterState.ALL) {
+          return todos;
+        }
+        let todosfiltered = todos.filter((todo: Todo) => {
+          const filterCondition = currentFilter === FilterState.COMPLETED ? true : false;
+          return todo.isCompleted === filterCondition;
+        });
+        notCompleted = 0;
+        this.progressValue = 0;
+        todosfiltered.forEach(todo => {
+          if(todo.isCompleted){
+            notCompleted = notCompleted + 1;
+          }
+        })
+
+        total = todosfiltered.length;
+        this.progressValue = (notCompleted / total) * 100 || 0;
+        return todosfiltered;
+      })
+    );
+  }
 
 
-  setFilterState(filterState: FilterState){
+  setFilterState(filterState: FilterState) {
     this.activeFilter.next(filterState);
   }
 
-  clearCompleted(){
-    if(this.user && this.items$){
+  clearCompleted() {
+    if (this.user && this.items$) {
       this.firestore
         .collection<Todo>('todos', ref => ref
           .where('userId', '==', this.user?.uid)
           .where('isCompleted', '==', true)
-      )
-      .get()
-      .pipe(
-        map((qs: QuerySnapshot<Todo>) => {
-          return qs.docs;
-        })
-      )
-      .subscribe((docs: QueryDocumentSnapshot<Todo>[]) => {
-        docs.forEach((doc: QueryDocumentSnapshot<Todo>) => {
-          doc.ref.delete();
+        )
+        .get()
+        .pipe(
+          map((qs: QuerySnapshot<Todo>) => {
+            return qs.docs;
+          })
+        )
+        .subscribe((docs: QueryDocumentSnapshot<Todo>[]) => {
+          docs.forEach((doc: QueryDocumentSnapshot<Todo>) => {
+            doc.ref.delete();
+          });
         });
-      });
     }
   }
 
-  setAsCompleted(todo: Todo){
+  setAsCompleted(todo: Todo) {
     const todoDoc = this.firestore.doc(`todos/${todo.id}`);
     todoDoc.update({
       isCompleted: true
     });
   }
 
-  deleteTodo(todo:Todo){
+  deleteTodo(todo: Todo) {
     const todoDoc = this.firestore.doc(`todos/${todo.id}`);
     todoDoc.delete();
   }

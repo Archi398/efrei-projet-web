@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { Todo } from 'src/app/models/todo';
 import { User } from 'src/app/models/user';
@@ -12,6 +12,7 @@ import { AuthService } from 'src/app/auth.service';
 export class AddTodoComponent implements OnInit {
   todosCollection: AngularFirestoreCollection<Todo>;
   user: User | null = null;
+  @Output() update = new EventEmitter <string> ();
   constructor(
     private afs: AngularFirestore,
     private auth: AuthService
@@ -26,13 +27,14 @@ export class AddTodoComponent implements OnInit {
   }
 
   addTodo(inputValue:string){
-    console.log(inputValue);
     if(inputValue && this.user){
       this.todosCollection.add({
         isCompleted: false,
         title: inputValue,
         userId: this.user.uid
       });
+
+      this.update.emit('salut');
     }
     
   }
