@@ -45,3 +45,25 @@ body {
 .mat-input-placeholder {
     color: white !important;
 }
+.btn {
+    color: white;
+    background-color: #e01d5b;
+}
+ h2 {
+    letter-spacing: 2px !important;
+    font-size: 30px !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+}
+@keyframes zoomIn {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.2);
+  }
+}
+
+.zoom-in {
+  animation: zoomIn 0.3s ease;
+}

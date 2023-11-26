@@ -2,12 +2,7 @@
     display: flex;
     justify-content: space-between;
     margin: 2rem 0;
-    h2 {
-        letter-spacing: 2px;
-        font-size: 30px;
-        font-weight: 700;
-        color: #ffffff;
-    }
+   
 }
 
 nav {
@@ -24,7 +19,3 @@ mat-icon {
     width: 10%;
 }
 
-.btn {
-    color: white;
-    background-color: #e01d5b;
-}

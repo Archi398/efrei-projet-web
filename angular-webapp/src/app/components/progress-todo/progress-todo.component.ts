@@ -21,7 +21,7 @@ export class ProgressBarTodo implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['inputProgressValue']) {
-      this.value = changes['inputProgressValue'].currentValue;
+      this.value = Math.round(changes['inputProgressValue'].currentValue);
     }
   }
 }

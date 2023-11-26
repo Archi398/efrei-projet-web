@@ -48,12 +48,16 @@ mat-radio-button {
     button {
         padding: 0 2px;
         &.active-filter {
-            color: #8585f3;
+            color: #481C4B;
         }
     }
 
     &.filter-container--mobile {
         margin-top: 1rem;
     }
+}
+.btn-bottom{
+    margin-right: 5px;
+margin-left: 5px;
 }
 
