@@ -11,8 +11,8 @@ Bienvenue sur FocusFlow, votre compagnon ultime pour une gestion efficace de vos
 ## Installation pour le site (Framework Angular)
 
 1. Clonez le répertoire du projet :
-    - git clone https://github.com/votre-utilisateur/appetiz.git
-    - cd focusflow
+    - git clone https://github.com/Archi398/efrei-projet-web.git
+    - cd angular-webapp
 
 2. Installez les dépendances :
     - npm install
@@ -28,8 +28,8 @@ Bienvenue sur FocusFlow, votre compagnon ultime pour une gestion efficace de vos
 ## Installation pour l'application (Flutter)
 
 1. Clonez le répertoire du projet :
-    - git clone https://github.com/votre-utilisateur/focusflow-flutter.git
-    - cd focusflow-flutter
+    - git clone https://github.com/Archi398/efrei-projet-web.git
+    - cd mobile
 
 ⚠️ Assurez-vous que Flutter est correctement installé sur votre machine ⚠️
 
