@@ -1,11 +1,14 @@
 mat-card {
     margin-top: 0.5rem;
-    padding: 0;
 }
 
 span.completed {
     text-decoration: line-through;
     padding-left: 6px;
+}
+
+span {
+    color: white;
 }
 
 mat-list-item {
@@ -27,11 +30,18 @@ mat-card-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin: 10px;
     @media screen and (max-width: 375px){
         margin-right: 0;
     }
+}
+
+.icon-cross {
+    color: white;
+}
+
+mat-radio-button {
+    color: white;
 }
 
 .filter-container {

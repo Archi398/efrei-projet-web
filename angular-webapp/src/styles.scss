@@ -8,6 +8,7 @@ html, body {
     box-sizing: border-box;
 }
 body { 
+    color: white !important;
     margin: 0; 
     font-family: "Josefin Sans", "Helvetica Neue", sans-serif; 
     background-repeat: no-repeat;
@@ -24,11 +25,23 @@ body {
 
 .icon-check {
     border-radius: 90px;
-    background: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+    background: linear-gradient(#E01D5B, #481C4B);
     position: relative;
     svg {
         position: absolute;
         top: 8px;
         left: 6px;
     }
+}
+
+.mat-card {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.mat-input-placeholder {
+    color: white !important;
 }

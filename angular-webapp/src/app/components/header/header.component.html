@@ -1,7 +1,7 @@
 <header>
     <nav>
-        <a mat-flat-button *ngIf="!user" routerLink="/login">se connecter</a>
-        <button *ngIf="user" mat-flat-button (click)="logout()">Déconexion </button>
+        <img class="logo" src="../../../assets/images/logo2.png" />
+        <button class="btn" *ngIf="user" mat-flat-button (click)="logout()">Déconnexion </button>
     </nav>
     <div class="page-header-container">
         <h2>{{pageTitle}}</h2> 

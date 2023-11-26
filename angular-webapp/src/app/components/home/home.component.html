@@ -23,19 +23,20 @@
     <span>{{totalActiveTodos}} Taches a faire  </span>    
     <div class="filter-container" *ngIf="!isSmallScreen">
       <button mat-flat-button [ngClass]="{'active-filter': isFilterActive(FilterState.ALL)}"  (click)="setFilterState(FilterState.ALL)">Tout</button>
-      <button mat-flat-button [ngClass]="{'active-filter': isFilterActive(FilterState.ACTIVE)}" (click)="setFilterState(FilterState.ACTIVE)">Active</button>
-      <button mat-flat-button [ngClass]="{'active-filter': isFilterActive(FilterState.COMPLETED)}" (click)="setFilterState(FilterState.COMPLETED)">Done</button>      
+      <button mat-flat-button [ngClass]="{'active-filter': isFilterActive(FilterState.ACTIVE)}" (click)="setFilterState(FilterState.ACTIVE)">Actif</button>
+      <button mat-flat-button [ngClass]="{'active-filter': isFilterActive(FilterState.COMPLETED)}" (click)="setFilterState(FilterState.COMPLETED)">Fini</button>      
     </div>    
     <button mat-flat-button (click)="clearCompleted()">Tout supprimer</button>
   </mat-card-footer>
+  <progress-todo></progress-todo>
 </mat-card>
 
 <mat-card *ngIf="isSmallScreen">
   <mat-card-content>
     <div class="filter-container filter-container--mobile">
-      <button mat-flat-button [ngClass]="{'active-filter': isFilterActive(FilterState.ALL)}" (click)="setFilterState(FilterState.ALL)">All</button>
-      <button mat-flat-button [ngClass]="{'active-filter': isFilterActive(FilterState.ACTIVE)}" (click)="setFilterState(FilterState.ACTIVE)">Active</button>
-      <button mat-flat-button [ngClass]="{'active-filter': isFilterActive(FilterState.COMPLETED)}" (click)="setFilterState(FilterState.COMPLETED)">Completed</button>
+      <button mat-flat-button [ngClass]="{'active-filter': isFilterActive(FilterState.ALL)}" (click)="setFilterState(FilterState.ALL)">Tout</button>
+      <button mat-flat-button [ngClass]="{'active-filter': isFilterActive(FilterState.ACTIVE)}" (click)="setFilterState(FilterState.ACTIVE)">Actif</button>
+      <button mat-flat-button [ngClass]="{'active-filter': isFilterActive(FilterState.COMPLETED)}" (click)="setFilterState(FilterState.COMPLETED)">Fini</button>
     </div>   
   </mat-card-content>
 </mat-card>

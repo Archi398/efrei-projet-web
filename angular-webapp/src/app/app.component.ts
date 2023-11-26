@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class AppComponent implements OnInit {
   title = 'angular-firebase-todo';
-  pageTitle = 'Todo';
+  pageTitle = '';
   
   constructor(
     private auth: AuthService,
@@ -43,6 +43,6 @@ export class AppComponent implements OnInit {
   }
 
   changePageHeader(){
-    this.pageTitle = this.router.url === '/login' ? 'Login' : 'Todo';
+    this.pageTitle = this.router.url === '/login' ? 'Login' : 'FocusFlow';
   }
 }

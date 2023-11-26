@@ -3,19 +3,28 @@
     justify-content: space-between;
     margin: 2rem 0;
     h2 {
-        letter-spacing: 10px;
+        letter-spacing: 2px;
         font-size: 30px;
         font-weight: 700;
         color: #ffffff;
-        text-transform: uppercase;
     }
 }
 
 nav {
     display: flex;
-    justify-content: right;
+    justify-content: space-between;
 }
 
 mat-icon {
     height: 30px;
+}
+
+.logo{
+    border-radius: 10px;
+    width: 10%;
+}
+
+.btn {
+    color: white;
+    background-color: #e01d5b;
 }
