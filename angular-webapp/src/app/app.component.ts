@@ -43,6 +43,17 @@ export class AppComponent implements OnInit {
   }
 
   changePageHeader(){
-    this.pageTitle = this.router.url === '/login' ? 'Login' : 'FocusFlow';
+    switch (this.router.url) {
+      case '/login':
+        this.pageTitle = 'Login';
+        break;
+      case '/signup':
+        this.pageTitle = 'Sign-Up';
+        break;
+    
+      default:
+        this.pageTitle = 'FocusFlow';
+        break;
+    }
   }
 }

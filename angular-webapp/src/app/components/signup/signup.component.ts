@@ -4,12 +4,12 @@ import { AuthService } from 'src/app/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-signup',
+  templateUrl: './signup.component.html',
+  styleUrls: ['./signup.component.scss']
 })
-export class LoginComponent {
-  username = new FormControl('');
+export class SignupComponent {
+  username = new FormControl('', [Validators.required]);
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', [Validators.required]);
 
@@ -18,25 +18,21 @@ export class LoginComponent {
     private router: Router
   ) { }
 
-  login() {
-    if (this.email.value && this.password.value) {
-      this.auth.signInWithEmailPassword(this.email.value, this.password.value);
+  signup() {
+    if (this.email.value && this.password.value && this.username.value) {
+      this.auth.signUpWithEmailPassword(this.email.value, this.password.value, this.username.value);
     }
   }
 
-  createuser() {
-    this.router.navigateByUrl('/signup');
+  connectuser() {
+    this.router.navigateByUrl('/login');
   }
 
-  loginWithGoogle() {
-    this.auth.signInWithGoogle();
-  }
 
   getErrorMessage() {
     if (this.email.hasError('required')) {
       return 'You must enter a value';
     }
-
     return this.email.hasError('email') ? 'Not a valid email' : '';
   }
 

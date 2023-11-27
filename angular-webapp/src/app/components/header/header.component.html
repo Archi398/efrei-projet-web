@@ -1,6 +1,6 @@
 <header>
     <nav>
-        <img class="logo" src="../../../assets/images/logo2.png" />
+        <img class="logo" src="../../../assets/images/logo2.png" style="border: solid;"/>
         <h2 *ngIf="!user" >FocusFlow</h2>
         <button class="btn" *ngIf="user" mat-flat-button (click)="logout()">Déconnexion </button>
     </nav>
@@ -10,6 +10,10 @@
         <button mat-icon-button aria-label="Change Theme" (click)="changeTheme()">
             <mat-icon class="icon-theme" [svgIcon]="currentThemeIcon"></mat-icon>
         </button>
+    </div>
+
+    <div *ngIf="user" >
+        <h4>Salut <span style="color: #e01d5b;">{{userDataResult?.username}}</span> ! Bienvenue sur votre todo list :</h4> 
     </div>
     
 </header>
