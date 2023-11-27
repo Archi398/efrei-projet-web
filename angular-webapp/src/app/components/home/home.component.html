@@ -4,7 +4,7 @@
     <mat-list role="list" *ngIf="filteredTodos$">
       <mat-list-item role="listitem"  *ngFor="let item of filteredTodos$ | async">
           <ng-container *ngIf="item.isCompleted; else elseBlock">
-            <mat-icon class="icon-check" svgIcon="icon-check"></mat-icon>
+            <mat-icon class="icon-check" svgIcon="icon-check" (click)="setAsNotCompleted(item)" clickable ></mat-icon>
             <span class="completed">{{item.title}}</span>
           </ng-container>
           <ng-template #elseBlock>          
