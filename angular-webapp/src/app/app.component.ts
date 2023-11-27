@@ -45,10 +45,10 @@ export class AppComponent implements OnInit {
   changePageHeader(){
     switch (this.router.url) {
       case '/login':
-        this.pageTitle = 'Login';
+        this.pageTitle = 'Connexion';
         break;
       case '/signup':
-        this.pageTitle = 'Sign-Up';
+        this.pageTitle = 'S\'inscrire';
         break;
     
       default:
